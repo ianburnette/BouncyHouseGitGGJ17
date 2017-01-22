@@ -28,6 +28,7 @@ public class DialogueSets : MonoBehaviour {
     float textTime;
     [SerializeField]
     Behaviour[] toDisableInDialogue;
+  
 	#endregion
 
 	#region PublicVariables
@@ -36,6 +37,7 @@ public class DialogueSets : MonoBehaviour {
 
 	#region UnityFunctions
 	void Start () {
+
         publicDialogue = this;
 
     }

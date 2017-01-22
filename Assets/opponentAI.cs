@@ -60,17 +60,33 @@ public class opponentAI : MonoBehaviour {
         }
         if (rand < chanceToJumpOnGround)
             movementScript.VirtualJump = true;
-        if (transform.position.x < player.position.x)
+        if (transform.position.x < player.position.x && !movingRight)
         {
-            transform.gameObject.layer = behindPlayerMask;
-            movingRight = true;
-            movingLeft = false;
-            movementScript.VirtualHinput = 1f;
+            if (Random.value < chanceToChangeDirection * .25f)
+            {
+                movingRight = true;
+                movingLeft = false;
+                movementScript.VirtualHinput = 1f;
+            }
+
+            /* transform.gameObject.layer = behindPlayerMask;
+             movingRight = true;
+             movingLeft = false;
+             movementScript.VirtualHinput = 1f;*/
         }
-        else
+        else if (transform.position.x > player.position.x && !movingLeft)
         {
-            transform.gameObject.layer = normalMask;
+            if (Random.value < chanceToChangeDirection * .25f)
+            {
+                movingRight = false;
+                movingLeft = true;
+                movementScript.VirtualHinput = -1f;
+            }
         }
+        //else
+        //{
+        //  //  transform.gameObject.layer = normalMask;
+        //}
          if ((!movingRight && !movingLeft) && transform.position.x >= player.position.x)
         {
             if (rand < chanceToChangeDirection)

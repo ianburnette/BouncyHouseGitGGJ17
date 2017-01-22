@@ -438,6 +438,17 @@ public class PlayerMove : MonoBehaviour {
     }
     void Move()
     {
+        if (transform.localScale.x < 0 && hInput > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            attackDirection = 1;
+            //candySpeed = -candySpeed;
+        }else if (transform.localScale.x > 0 && hInput < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            attackDirection = -1;
+           // candySpeed = -candySpeed;
+        }
         rb.AddForce(Vector2.right * hInput * horizontalMoveSpeed);
     }
     void GetHit(float amt)
